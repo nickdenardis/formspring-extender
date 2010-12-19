@@ -7,3 +7,40 @@ body {
     outline: 0 none;
     padding: 0;
 }
+.wrap {
+    margin: 0 auto;
+    width: 960px;
+}
+.wrap-inner {
+    margin: 0 10px;
+    position: relative;
+}
+.box {
+    -moz-border-radius: 5px 5px 5px 5px;
+}
+
+
+header#top {
+    background: url("/images/hdr-tile.png") repeat-x scroll 0 0 transparent;
+    height: 105px;
+}
+header#top a {
+	color: #eee;
+	text-decoration: none;
+}
+header#top a:hover {
+	text-decoration: underline;
+}
+header .wrap {
+    height: 98px;
+    padding-top: 7px;
+}
+
+
+
+footer p {
+    -moz-box-shadow: none;
+    background: none repeat scroll 0 0 rgba(31, 36, 41, 0.1);
+    padding: 10px;
+    text-align: center;
+}
