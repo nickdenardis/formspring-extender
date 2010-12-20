@@ -1,3 +1,21 @@
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,  footer, header, hgroup, 
+menu, nav, section, summary, time, mark, audio, video {
+  margin:0;
+  padding:0;
+  border:0;
+  outline:0;
+  font-size:100%;
+  vertical-align:baseline;
+  background:transparent;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { 
+    display:block;
+}
+
 body {
     background: url("/images/bg.png") repeat scroll 0 0 #EDEDED;
     color: #333333;
@@ -35,9 +53,49 @@ header .wrap {
     height: 98px;
     padding-top: 7px;
 }
+header h1 {
+    padding-top: 18px;
+    font-size: 18px;
+}
+
+#subbar {
+    margin-top: 22px;
+}
+nav#primary {
+    display: inline-block;
+    width: 640px;
+}
+nav ul {
+    list-style: none outside none;
+}
+nav#primary ul li {
+    display: inline-block;
+    position: relative;
+}
+nav#primary li.selected a {
+    color: #333333;
+}
+nav#primary ul li a {
+    border-right: 1px solid #EEEEEE;
+    color: #838B92;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 8px 30px 9px;
+    text-transform: uppercase;
+}
+
+#content {
+    margin-top: 10px;
+}
 
 
-
+footer {
+    color: #999999;
+    font-size: 12px;
+    margin-top: 10px;
+}
 footer p {
     -moz-box-shadow: none;
     background: none repeat scroll 0 0 rgba(31, 36, 41, 0.1);
