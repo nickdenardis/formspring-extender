@@ -1,12 +1,27 @@
 <?php
 	include_once($_SERVER['DOCUMENT_ROOT'] . '/../inc/application_top.php');
 	
+	
+	$connection = new FormspringOAuth(CONSUMER_KEY, CONSUMER_SECRET, '', '');
+
+	
 	if (trim($_GET['query']) != ''){
-		$myConnection = new FormspringOAuth('923d7f9ed7b5b1974b85fc48a6ebd53604d0eb445', 'db1ed9c781cc5d14486b75fa9c2076fc04d0eb445');
-		$list = $myConnection->get("search/profiles", array('query' => trim($_GET['query'])));
+		$list = $connection->get("search/profiles", array('query' => trim($_GET['query'])));
 	}
-	// Return success or failure
-	//return ($twitterConnection->http_code == '200');	
+	
+	$inbox = $connection->get("inbox/list");
+	echo '<pre>';
+	print_r($inbox);
+	echo '</pre>';
+	
+	$details = $connection->get("profile/details/waynestate");
+	echo '<pre>';
+	print_r($details);
+	echo '</pre>';
+	
+	echo '<pre>';
+	print_r($connection);
+	echo '</pre>';
 ?>
 <!doctype html>
 <html lang="en">
@@ -27,7 +42,7 @@
               <li class="home selected"><a href="/">Home</a></li>
               <li class="accounts"><a href="/accounts">Accounts</a></li>
               <li class="signup"><a href="/signup">Signup</a></li>
-              <li class="signin"><a href="/signin">Signin</a></li>
+              <li class="signin"><a href="/redirect.php">Signin</a></li>
             </ul>
           </nav>
         </div>
@@ -51,7 +66,6 @@
 		 			</fieldset>
 		 			<input type="submit" value="Search" />
 		 			</form>
-		 			
 		 			
 		 			<?php
 		 				if ($list->status == 'ok'){
