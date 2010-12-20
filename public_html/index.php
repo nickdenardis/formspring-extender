@@ -1,3 +1,13 @@
+<?php
+	include_once($_SERVER['DOCUMENT_ROOT'] . '/../inc/application_top.php');
+	
+	if (trim($_GET['query']) != ''){
+		$myConnection = new FormspringOAuth('923d7f9ed7b5b1974b85fc48a6ebd53604d0eb445', 'db1ed9c781cc5d14486b75fa9c2076fc04d0eb445');
+		$list = $myConnection->get("search/profiles", array('query' => trim($_GET['query'])));
+	}
+	// Return success or failure
+	//return ($twitterConnection->http_code == '200');	
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -15,9 +25,9 @@
           <nav id="primary">
             <ul>
               <li class="home selected"><a href="/">Home</a></li>
-              <li class="trends"><a href="/accounts">Accounts</a></li>
-              <li class="about"><a href="/signup">Signup</a></li>
-              <li class="about"><a href="/signin">Signin</a></li>
+              <li class="accounts"><a href="/accounts">Accounts</a></li>
+              <li class="signup"><a href="/signup">Signup</a></li>
+              <li class="signin"><a href="/signin">Signin</a></li>
             </ul>
           </nav>
         </div>
@@ -32,6 +42,26 @@
 				</header>
 				<div class="box-content">
 		 			<p>Use this to connect multiple people to one formspring account.</p>
+		 			
+		 			<h2>Search Profiles</h2>
+		 			<form action="/" method="get">
+		 			<fieldset>
+		 				<label for="query">Search: </label>
+		 				<input name="query" id="query" type="text" value="<?php echo trim($_GET['query']); ?>" />
+		 			</fieldset>
+		 			<input type="submit" value="Search" />
+		 			</form>
+		 			
+		 			
+		 			<?php
+		 				if ($list->status == 'ok'){
+		 					echo '<h3>Results</h3><pre>';
+		 					foreach ($list->response->profiles as $profile){
+		 						print_r($profile);
+		 					}
+		 					echo '</pre>';
+		 				}
+		 			?>
 		 		</div>
 			</div>
 		</div></div>
