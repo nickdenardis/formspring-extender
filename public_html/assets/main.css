@@ -90,6 +90,29 @@ nav#primary ul li a {
     margin-top: 10px;
 }
 
+.box {
+    -moz-border-radius: 5px 5px 5px 5px;
+    -moz-box-shadow: 0 1px 0 rgba(60, 60, 60, 0.3);
+    background: none repeat scroll 0 0 #FFFFFF;
+}
+.box header {
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    background: none repeat scroll 0 0 #F3F5F7;
+    border-bottom: 1px solid #DBDBDB;
+    margin: 0;
+    padding: 0;
+}
+.box header h1 {
+    display: inline-block;
+    font-size: 14px;
+    padding: 10px;
+    text-shadow: 1px 1px #FFFFFF;
+}
+.box-content {
+	padding: 5px;
+}
+
 
 footer {
     color: #999999;
