@@ -9,6 +9,7 @@
 		$list = $connection->get("search/profiles", array('query' => trim($_GET['query'])));
 	}
 	
+	/*
 	$inbox = $connection->get("inbox/list");
 	echo '<pre>';
 	print_r($inbox);
@@ -22,6 +23,7 @@
 	echo '<pre>';
 	print_r($connection);
 	echo '</pre>';
+	*/
 ?>
 <!doctype html>
 <html lang="en">
