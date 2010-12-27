@@ -89,5 +89,5 @@
 		
 	SetDefine('CONSUMER_KEY', '923d7f9ed7b5b1974b85fc48a6ebd53604d0eb445');
 	SetDefine('CONSUMER_SECRET', 'db1ed9c781cc5d14486b75fa9c2076fc04d0eb445');
-	SetDefine('OAUTH_CALLBACK', 'http://formspring:8888/callback.php');
+	SetDefine('OAUTH_CALLBACK', 'http://formspring:8888/callback');
 ?>
