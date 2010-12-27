@@ -24,9 +24,15 @@
 	$myUser->SetValue('oauth_token', $token_credentials['oauth_token']);
 	$myUser->SetValue('oauth_token_secret', $token_credentials['oauth_token_secret']);
 	
+	// Create a unique ID for the session
+	$myUser->SetValue('sessionid', uniqid());
+	
 	// Update the user information if found or insert if new
 	if (!$myUser->Save())
 		throw new SimplException('Error Saving Formspring Client Token', 2, 'Error: Error Saving Formspring Client Token :' . $details->response->username);
+	
+	// Set the session cookie
+	setcookie('session', $myUser->GetValue('sessionid'), time()+(3600*24*7));
 	
 	// See if this user already exists in the DB
 	$myAccountInfo->ResetValues();
@@ -45,5 +51,4 @@
 	// Redirect to the list page
 	header('Location: ' . PATH , true, 302);
 	die();
-
 ?>

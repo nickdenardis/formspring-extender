@@ -90,4 +90,18 @@
 	SetDefine('CONSUMER_KEY', '923d7f9ed7b5b1974b85fc48a6ebd53604d0eb445');
 	SetDefine('CONSUMER_SECRET', 'db1ed9c781cc5d14486b75fa9c2076fc04d0eb445');
 	SetDefine('OAUTH_CALLBACK', 'http://formspring:8888/callback');
+	
+	$myUser = new User;
+	$myAccountInfo = new AccountInfo;
+
+	// If the user has already logged in the past week
+	if ($_COOKIE['session'] != ''){
+		// Look the user up and set their session
+		$myUser->SetValue('sessionid', $_COOKIE['session']);
+		$myUser->GetInfo(NULL, array('sessionid'));
+		if ($myUser->GetPrimary() != ''){
+			$myAccountInfo->SetValue('user_id', $myUser->GetPrimary());
+			$myAccountInfo->GetInfo(NULL, array('user_id'));
+		}
+	}
 ?>

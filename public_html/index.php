@@ -9,7 +9,8 @@
 		$list = $connection->get("search/profiles", array('query' => trim($_GET['query'])));
 	}
 	
-	Pre($_SESSION);
+	Pre($myUser->Nice());
+	Pre($myAccountInfo->Nice());
 	
 	/*
 	$inbox = $connection->get("inbox/list");
@@ -44,9 +45,11 @@
           <nav id="primary">
             <ul>
               <li class="home selected"><a href="/">Home</a></li>
-              <li class="accounts"><a href="/accounts">Accounts</a></li>
-              <li class="signup"><a href="/signup">Signup</a></li>
               <li class="signin"><a href="/redirect">Signin</a></li>
+              <?php if ($myUser->GetPrimary() != ''){ ?>
+              <li class="accounts"><a href="/accounts">Accounts</a></li>
+              <li class="signin"><a href="/logout">Logout</a></li>
+              <?php } ?>
             </ul>
           </nav>
         </div>
