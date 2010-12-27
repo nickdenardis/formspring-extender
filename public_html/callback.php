@@ -3,6 +3,7 @@
 	
 	$myUser = new User;
 	$myAccountInfo = new AccountInfo;
+	$myAccountAccess = new AccountAccess;
 	
 	// Make the temp conenction
 	$connection = new FormspringOAuth(CONSUMER_KEY, CONSUMER_SECRET, $_SESSION['temporary_credentials']['oauth_token'], $_SESSION['temporary_credentials']['oauth_token_secret']);
@@ -32,7 +33,15 @@
 		throw new SimplException('Error Saving Formspring Client Token', 2, 'Error: Error Saving Formspring Client Token :' . $details->response->username);
 	
 	// Set the session cookie
-	setcookie('session', $myUser->GetValue('sessionid'), time()+(3600*24*7));
+	if ($_GET['delegate'] == '')
+		setcookie('session', $myUser->GetValue('sessionid'), time()+(3600*24*7));
+	else{
+		// Setup the relationship
+		$myAccountAccess->SetValues('user_id', $_GET['delegate']);
+		$myAccountAccess->SetValues('delegate_id', $myUser->GetPrimary());
+		$myAccountAccess->SetValues('type', 'full');
+		$myAccountAccess->Save();
+	}
 	
 	// See if this user already exists in the DB
 	$myAccountInfo->ResetValues();

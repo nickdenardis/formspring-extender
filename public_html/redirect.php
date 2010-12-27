@@ -5,7 +5,7 @@
 	$connection = new FormspringOAuth(CONSUMER_KEY, CONSUMER_SECRET);
 	
 	// Get the temp credentials
-	$temporary_credentials = $connection->getRequestToken(OAUTH_CALLBACK);
+	$temporary_credentials = $connection->getRequestToken(OAUTH_CALLBACK . (($_GET['delegate'] != '')?'?delegate=' . $_GET['delegate']:''));
 	
 	// Save the temp credentials to the session
 	$_SESSION['temporary_credentials'] = $temporary_credentials;
