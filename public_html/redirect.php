@@ -7,5 +7,6 @@
 	//print_r($temporary_credentials);
 	
 	$redirect_url = $connection->getAuthorizeURL($temporary_credentials);
-	header('302', $redirect_url);
+	header('Location: ' . $redirect_url);
+	die();
 ?>

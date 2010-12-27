@@ -7,7 +7,7 @@
  */
 
 /* Load OAuth lib. You can find it at http://oauth.net */
-require_once('oauth.php');
+require_once(DIR_CLASSES . 'oauth.php');
 
 /**
  * Formspring OAuth class

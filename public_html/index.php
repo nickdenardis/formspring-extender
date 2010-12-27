@@ -44,7 +44,7 @@
               <li class="home selected"><a href="/">Home</a></li>
               <li class="accounts"><a href="/accounts">Accounts</a></li>
               <li class="signup"><a href="/signup">Signup</a></li>
-              <li class="signin"><a href="/redirect.php">Signin</a></li>
+              <li class="signin"><a href="/redirect">Signin</a></li>
             </ul>
           </nav>
         </div>

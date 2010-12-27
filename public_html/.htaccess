@@ -1,0 +1,4 @@
+RewriteEngine On
+
+# Default Remove the PHP extension
+RewriteRule ^([a-zA-Z-]+)/?$ /$1.php
