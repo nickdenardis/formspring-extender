@@ -9,6 +9,8 @@
 		$list = $connection->get("search/profiles", array('query' => trim($_GET['query'])));
 	}
 	
+	Pre($_SESSION);
+	
 	/*
 	$inbox = $connection->get("inbox/list");
 	echo '<pre>';
