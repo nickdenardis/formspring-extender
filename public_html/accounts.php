@@ -1,9 +1,8 @@
 <?php
 	include_once($_SERVER['DOCUMENT_ROOT'] . '/../inc/application_top.php');
-
-	if ($myUser->GetPrimary() != ''){
-		Pre($myUser->Nice());
-	}else{
-		echo 'No User Accounts.';
-	}
+	
+	include_once(DIR_ABS .  '../inc/application_bottom.php');
+	
+	// Display the Index Page
+	$smarty->display('accounts.tpl');
 ?>
