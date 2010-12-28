@@ -13,6 +13,32 @@ class ActionLog extends DbTemplate {
 	}
 }
 
+class SimplException extends Exception {
+    // Redefine the exception so message isn't optional
+    public function __construct($message, $code = 2, $log = '', $redirect ='') {
+       // make sure everything is assigned properly
+        parent::__construct($message, $code);
+	   
+	    // Set the alery
+   		SetAlert(stripslashes($this->message));
+		
+		// Log the Message if needed
+		if ($log != '')
+			LogAction($log, $code);
+		
+		// If needed Redirect
+		if ($redirect != ''){
+			header('Location:' . $redirect);
+			die();
+		}
+    }
+
+    // custom string representation of object
+    public function __toString() {
+        return __CLASS__ . ": [{$this->code}]: {$this->message}\n";
+    }
+}
+
 class FormspringException extends Exception {
 	/**
      * @var string

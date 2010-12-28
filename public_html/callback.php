@@ -1,6 +1,9 @@
 <?php
 	include_once($_SERVER['DOCUMENT_ROOT'] . '/../inc/application_top.php');
 	
+	if (!isset($_GET['oauth_token']))
+		throw new SimplException('A Technical Error has Occurred. Please try again.', 2, 'Error: Tried to use callback without GET token.', '/');
+
 	$myUser = new User;
 	$myAccountInfo = new AccountInfo;
 	$myAccountAccess = new AccountAccess;
@@ -33,14 +36,17 @@
 		throw new SimplException('Error Saving Formspring Client Token', 2, 'Error: Error Saving Formspring Client Token :' . $details->response->username);
 	
 	// Set the session cookie
-	if ($_GET['delegate'] == '')
+	if (!isset($_GET['delegate'])){
 		setcookie('session', $myUser->GetValue('sessionid'), time()+(3600*24*7));
-	else{
+	}else{
 		// Setup the relationship
-		$myAccountAccess->SetValues('user_id', $_GET['delegate']);
-		$myAccountAccess->SetValues('delegate_id', $myUser->GetPrimary());
-		$myAccountAccess->SetValues('type', 'full');
-		$myAccountAccess->Save();
+		$myAccountAccess->SetValue('user_id', $_GET['delegate']);
+		$myAccountAccess->SetValue('delegate_id', $myUser->GetPrimary());
+		$myAccountAccess->SetValue('type', 'full');
+		
+		if (!$myAccountAccess->Save())
+			throw new SimplException('Error Saving Delegate Information', 2, 'Error: Error Saving Delegate Information. Delegate:' . $_GET['delegate']);
+			
 	}
 	
 	// See if this user already exists in the DB
