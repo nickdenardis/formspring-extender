@@ -19,11 +19,11 @@ class AccountAccess extends DbTemplate {
 		$display[] = array('user_id', 'delegate_id', 'type');
 		
 		// Join the tables
-		$this->Join($myUser, 'user_id', 'LEFT');
+		$this->Join($myUser, 'user_id=delegate_id', 'LEFT');
 		$display[] = array('username');
 		
 		// Join the tables
-		$this->Join($myAccountInfo, 'user_id', 'LEFT');
+		$this->Join($myAccountInfo, 'user_id=delegate_id', 'LEFT');
 		$display[] = array('name', 'website', 'location', 'photo_url');
 		
 		// Get the list
