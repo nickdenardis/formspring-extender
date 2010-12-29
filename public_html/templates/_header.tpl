@@ -15,10 +15,13 @@
           <nav id="primary">
             <ul>
               <li class="home selected"><a href="/">Home</a></li>
-              <li class="signin"><a href="/redirect">Signin</a></li>
               {if $myUser->GetPrimary() != ''}
+	              <li class="accounts"><a href="/inbox">Inbox</a></li>
+	              <li class="accounts"><a href="/categories">Categories</a></li>
 	              <li class="accounts"><a href="/accounts">Accounts</a></li>
 	              <li class="signin"><a href="/logout">Logout</a></li>
+              {else}
+	              <li class="signin"><a href="/redirect">Signin</a></li>
               {/if}
             </ul>
           </nav>
