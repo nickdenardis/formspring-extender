@@ -79,10 +79,13 @@ class FormTemplates extends Smarty {
         $this->cache_dir = DIR_ABS . '../cache';
         
         //$this->load_filter('output','trimwhitespace');
-        //$this->register->modifier('sslash', 'stripslashes');
+        $this->registerPlugin("modifier","sslash", "stripslashes");
         
         $this->caching = false;
         $this->debugging = false;
+        
+        //$this->plugins_dir[] = DIR_ABS . '../my_plugins';
+        //$this->loadPlugin('smarty_function_alert'); 
     }
 }
 ?>

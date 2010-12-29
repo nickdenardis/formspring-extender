@@ -2,4 +2,6 @@ RewriteEngine On
 
 # Default Remove the PHP extension
 RewriteRule ^([a-zA-Z-]+)/?$ /$1.php
-RewriteRule ^([a-zA-Z-]+)/delegate/([0-9]+)?$ /$1.php?delegate=$2 [L]
+RewriteRule ^([a-zA-Z-]+)/([a-zA-Z-]+)/?$ /$1-$2.php [L]
+RewriteRule ^([a-zA-Z-]+)/([a-zA-Z-]+)/([0-9]+)/?$ /$1-$2.php?id=$3 [L]
+RewriteRule ^([a-zA-Z-]+)/delegate/([0-9]+)/?$ /$1.php?delegate=$2 [L]

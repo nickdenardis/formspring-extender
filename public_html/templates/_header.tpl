@@ -16,8 +16,9 @@
             <ul>
               <li class="home selected"><a href="/">Home</a></li>
               {if $myUser->GetPrimary() != ''}
-	              <li class="accounts"><a href="/inbox">Inbox</a></li>
-	              <li class="accounts"><a href="/categories">Categories</a></li>
+	              <li class="inbox"><a href="/inbox">Inbox</a></li>
+	              <li class="answers"><a href="/answers">Answers</a></li>
+	              <li class="categories"><a href="/categories">Categories</a></li>
 	              <li class="accounts"><a href="/accounts">Accounts</a></li>
 	              <li class="signin"><a href="/logout">Logout</a></li>
               {else}
@@ -31,3 +32,18 @@
    	</header>
 	<section id="content">
 		<div class="wrap"><div class="wrap-inner">
+		
+		<div id="notifications">
+			{*}{alert info=$error}
+			{alert info=$success type='success'}{/*}
+		</div>
+		
+		{if is_array($actions)}
+			<div id="options">
+				<ul>
+					{foreach from=$actions key=action_id item=action name=actions}
+						<li class="{$action.class}"><a href="{$action.link}">{$action.title|sslash}</a></li>
+					{/foreach}
+				</ul>
+			</div>
+		{/if}

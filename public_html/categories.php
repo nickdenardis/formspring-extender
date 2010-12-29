@@ -10,6 +10,14 @@
 	
 	// Assign everything to the templates
 	$smarty->assign('myObject', $myCategory);
+	$smarty->assign('display', array('category', 'status', 'date_entered'));
+	$smarty->assign('locations', array('category' => '<a href="/category/edit/{$item_id}">{$data}</a>'));
+	
+	// Actions
+	$actions = array();
+	$actions[] = array('class' => 'add', 'link' => '/category/edit', 'title' => 'Add Category');
+	$smarty->assign('actions', $actions);
+	
 	
 	// Display the Index Page
 	$smarty->display('list.tpl');
