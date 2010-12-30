@@ -46,6 +46,10 @@
 		}
 	} catch (SimplException $e) {}
 	
+	
+	//Pre($myAnswer->Category()->Count());
+	//Pre($myAnswer->Category()->Items(array('category', 'status')));
+	
 	// Set the object
 	$smarty->assign('myObject', $myAnswer);
 	$smarty->assign('display', array('question', 'answer', 'date_entered'));

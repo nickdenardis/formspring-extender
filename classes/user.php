@@ -1,8 +1,11 @@
 <?php
-class User extends DbTemplate {
+class User extends ActiveRecord {
 	function __construct(){
 		// Call the parent constructor
 		parent::__construct('users', DB_DEFAULT);
+		
+		// Set the relationships
+		$this->HasOne('AccountInfo');
 		
 		// Set the Required
 		$this->SetRequired(array('username', 'oauth_token', 'oauth_token_secret'));
