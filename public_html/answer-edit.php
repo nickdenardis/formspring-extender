@@ -46,10 +46,6 @@
 		}
 	} catch (SimplException $e) {}
 	
-	
-	//Pre($myAnswer->Category()->Count());
-	//Pre($myAnswer->Category()->Items(array('category', 'status')));
-	
 	// Set the object
 	$smarty->assign('myObject', $myAnswer);
 	$smarty->assign('display', array('question', 'answer', 'date_entered'));
@@ -63,5 +59,5 @@
 	
 	
 	// Display the Edit Page
-	$smarty->display('edit.tpl');
+	$smarty->display('answers/edit.tpl');
 ?>

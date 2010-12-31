@@ -6,6 +6,7 @@ class User extends ActiveRecord {
 		
 		// Set the relationships
 		$this->HasOne('AccountInfo');
+		$this->HasMany('Category');
 		
 		// Set the Required
 		$this->SetRequired(array('username', 'oauth_token', 'oauth_token_secret'));

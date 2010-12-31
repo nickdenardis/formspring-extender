@@ -44,7 +44,7 @@ class Answer extends ActiveRecord {
 						$this->SetValue('answer', $answer->answer);
 						$this->SetValue('date_asked',  date('Y-m-d H:i:s', strtotime($answer->time)));
 						$this->SetValue('user_id',  $myUser->GetPrimary());
-		
+
 						// Save the new answer
 						if (!$this->Save())
 							throw new SimplException('Error saving answer to database', 2, 'Error: Saving answer to database: ' . $answer->id);
