@@ -11,6 +11,28 @@ class Answer extends ActiveRecord {
 		$this->SetRequired(array('user_id', 'question_id', 'question', 'answer', 'date_asked'));
 	}
 	
+	public function SyncCategories($categories){
+		if (!is_array($categories))
+			$categories[] = $categories;
+	
+		Pre($categories);
+
+		// Get all the items in the database
+		$in_categories = $this->Category()->Items();
+		Pre($in_categories);
+		
+		// If the item is not in the DB already add them
+		foreach ($categories as $category){
+			if (!in_array($category, $in_categories)){
+				Pre($category);
+			}
+		}
+		
+		// If the item is not in the new list remove it
+		
+		// Return the count of items now associated
+	}
+	
 	public function GetRecentAnswers($user_id){
 		global $myUser;
 		

@@ -6,7 +6,7 @@
 	
 	try {
 		// If they are saving the Information
-		if ($_POST['submit'] == 'save'){
+		if ($_POST['submit'] == 'Save'){
 			// Get all the Form Data
 			$myAnswer->SetValues($_POST);
 			$myAnswer->SetValue('user_id', $myUser->GetPrimary());
@@ -21,7 +21,7 @@
 		}
 	
 		// If Deleting 
-		if ($_POST['submit'] == 'delete'){
+		if ($_POST['submit'] == 'Delete'){
 			$myAnswer->SetValues($_POST);
 			$name = stripslashes($myAnswer->GetValue('question'));
 			
@@ -43,6 +43,11 @@
 			// Try to get the info
 			if (!$myAnswer->GetInfo())
 				throw new SimplException('Invalid answer, please try another.', 3, 'Access to invalid answer - ' . $myAnswer->GetPrimary(), PATH . 'answers');
+		}
+		
+		// If saving categories
+		if ($_POST['submit'] == 'Save Categories'){
+			$myAnswer->SyncCategories($_POST['category']);
 		}
 	} catch (SimplException $e) {}
 	
