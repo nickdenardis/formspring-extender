@@ -11,6 +11,10 @@ class Answer extends ActiveRecord {
 		$this->SetRequired(array('user_id', 'question_id', 'question', 'answer', 'date_asked'));
 	}
 	
+	public function SyncCategories($categories){
+		
+	}
+	
 	public function GetRecentAnswers($user_id){
 		global $myUser;
 		
