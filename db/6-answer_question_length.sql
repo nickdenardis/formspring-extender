@@ -1,0 +1,1 @@
+ALTER TABLE `answers` CHANGE `question_id` `question_id` VARCHAR( 24 ) NOT NULL 

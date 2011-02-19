@@ -10,9 +10,9 @@
 			// Get all the Form Data
 			$myAnswer->SetValues($_POST);
 			$myAnswer->SetValue('user_id', $myUser->GetPrimary());
-						
+
 			// Save the Make
-			if ($myAnswer->Save()){
+			if ($myAnswer->Save() && $myAnswer->Respond()){
 				SetAlert('Answer Successfully Saved.','success');
 				LogAction('Saved Answer: ' . stripslashes($myAnswer->GetValue('question')), 1);
 				header('location:' . PATH . 'answers');
@@ -43,6 +43,12 @@
 			// Try to get the info
 			if (!$myAnswer->GetInfo())
 				throw new SimplException('Invalid answer, please try another.', 3, 'Access to invalid answer - ' . $myAnswer->GetPrimary(), PATH . 'answers');
+		
+			// If there is already an answer throw the user to the answer edit
+			if ($myAnswer->GetValue('answer') != ''){
+				header('location:' . PATH . 'answer/edit/' . $myAnswer->GetPrimary());
+				die();
+			}
 		}
 	} catch (SimplException $e) {}
 	
