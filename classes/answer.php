@@ -93,6 +93,28 @@ class Answer extends ActiveRecord {
 		return $total_imported;
 	}
 	
+	public function SyncCategories($categories){
+		if (!is_array($categories))
+			$categories[] = $categories;
+	
+		Pre($categories);
+
+		// Get all the items in the database
+		$in_categories = $this->Category()->Items();
+		Pre($in_categories);
+		
+		// If the item is not in the DB already add them
+		foreach ($categories as $category){
+			if (!in_array($category, $in_categories)){
+				Pre($category);
+			}
+		}
+		
+		// If the item is not in the new list remove it
+		
+		// Return the count of items now associated
+	}
+	
 	public function GetRecentAnswers($user_id){
 		global $myUser;
 		
@@ -126,7 +148,7 @@ class Answer extends ActiveRecord {
 						$this->SetValue('answer', $answer->answer);
 						$this->SetValue('date_asked',  date('Y-m-d H:i:s', strtotime($answer->time)));
 						$this->SetValue('user_id',  $myUser->GetPrimary());
-		
+
 						// Save the new answer
 						if (!$this->Save())
 							throw new SimplException('Error saving answer to database', 2, 'Error: Saving answer to database: ' . $answer->id);

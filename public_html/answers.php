@@ -24,7 +24,7 @@
 	// Assign everything to the templates
 	$smarty->assign('myObject', $myAnswers);
 	$smarty->assign('display', array('question', 'date_entered'));
-	$smarty->assign('locations', array('question' => '<a href="/answer/edit/{$item_id}">{$data}</a>'));
+	$smarty->assign('locations', array('question' => '<a href="/answer/view/{$item_id}">{$data}</a>'));
 	
 	// Actions
 	$actions = array();

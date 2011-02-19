@@ -44,11 +44,12 @@
 			if (!$myAnswer->GetInfo())
 				throw new SimplException('Invalid answer, please try another.', 3, 'Access to invalid answer - ' . $myAnswer->GetPrimary(), PATH . 'answers');
 		}
+		
+		// If saving categories
+		if ($_POST['submit'] == 'Save Categories'){
+			$myAnswer->SyncCategories($_POST['category']);
+		}
 	} catch (SimplException $e) {}
-	
-	
-	//Pre($myAnswer->Category()->Count());
-	//Pre($myAnswer->Category()->Items(array('category', 'status')));
 	
 	// Set the object
 	$smarty->assign('myObject', $myAnswer);
@@ -64,5 +65,5 @@
 	
 	
 	// Display the Edit Page
-	$smarty->display('edit.tpl');
+	$smarty->display('answers/edit.tpl');
 ?>

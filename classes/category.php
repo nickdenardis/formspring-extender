@@ -6,6 +6,7 @@ class Category extends ActiveRecord {
 		
 		// Set the relationships
 		$this->HasMany('Answer', 'AnswerCategory');
+		$this->BelongsTo('User');
 		
 		// Set the Required
 		$this->SetRequired(array('user_id', 'status', 'category'));
