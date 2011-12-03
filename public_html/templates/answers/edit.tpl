@@ -14,7 +14,7 @@
 			{/if}
 			{if is_array($buttons)}
 				{foreach from=$buttons key=button_id item=button name=buttons}
-					 <input name="submit" type="submit" name="{$button.name}" value="{$button.label|sslash}"{if $button.onclick != ''} onclick="{$button.onclick}"{/if}>
+					 <input name="submit" type="submit" name="{$button.name}" value="{$button.label|stripslashes}"{if $button.onclick != ''} onclick="{$button.onclick}"{/if}>
 				{/foreach}
 			{/if}
 		</div>

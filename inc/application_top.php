@@ -95,7 +95,7 @@
 	$myAccountInfo = new AccountInfo;
 
 	// If the user has already logged in the past week
-	if ($_COOKIE['session'] != ''){
+	if (isset($_COOKIE['session']) && $_COOKIE['session'] != ''){
 		// Look the user up and set their session
 		$myUser->SetValue('sessionid', $_COOKIE['session']);
 		$myUser->GetInfo(NULL, array('sessionid'));

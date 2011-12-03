@@ -38,11 +38,11 @@
 			{alert info=$success type='success'}{/*}
 		</div>
 		
-		{if is_array($actions)}
+		{if isset($actions) && is_array($actions)}
 			<div id="options">
 				<ul>
 					{foreach from=$actions key=action_id item=action name=actions}
-						<li class="{$action.class}"><a href="{$action.link}">{$action.title|sslash}</a></li>
+						<li class="{$action.class}"><a href="{$action.link}">{$action.title|stripslashes}</a></li>
 					{/foreach}
 				</ul>
 			</div>

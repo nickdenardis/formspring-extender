@@ -71,21 +71,23 @@ class FormspringException extends Exception {
     }
 }
 
-class FormTemplates extends Smarty { 
-	function __construct() {
-        $this->template_dir = DIR_ABS . 'templates';
-        $this->compile_dir = DIR_ABS . '../templates_c';
-        $this->config_dir = DIR_ABS . '../config';
-        $this->cache_dir = DIR_ABS . '../cache';
-        
-        //$this->load_filter('output','trimwhitespace');
-        $this->registerPlugin("modifier","sslash", "stripslashes");
-        
-        $this->caching = false;
-        $this->debugging = false;
-        
-        //$this->plugins_dir[] = DIR_ABS . '../my_plugins';
-        //$this->loadPlugin('smarty_function_alert'); 
-    }
+class FormTemplates extends Smarty {
+
+   function __construct(){
+
+        // Class Constructor.
+        // These automatically get set with each new instance.
+
+        parent::__construct();
+
+        $this->setTemplateDir(DIR_ABS . 'templates/');
+        $this->setCompileDir(DIR_ABS . '../templates_c/');
+        $this->setConfigDir(DIR_ABS . '../configs/');
+        $this->setCacheDir(DIR_ABS . '../cache/');
+
+        //$this->caching = Smarty::CACHING_LIFETIME_CURRENT;
+        $this->assign('app_name', 'formspring-extender');
+   }
+
 }
 ?>

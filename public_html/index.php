@@ -5,12 +5,12 @@
 	$connection = new FormspringOAuth(CONSUMER_KEY, CONSUMER_SECRET, '', '');
 
 	
-	if (trim($_GET['query']) != ''){
+	if (isset($_GET['query']) && trim($_GET['query']) != ''){
 		$list = $connection->get("search/profiles", array('query' => trim($_GET['query'])));
 	}
 		
-	Pre($myUser->Nice());
-	Pre($myAccountInfo->Nice());
+	//Pre($myUser->Nice());
+	//Pre($myAccountInfo->Nice());
 	
 	include_once(DIR_ABS .  '../inc/application_bottom.php');
 	

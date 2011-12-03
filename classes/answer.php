@@ -11,10 +11,6 @@ class Answer extends ActiveRecord {
 		$this->SetRequired(array('user_id', 'question_id', 'question', 'date_asked'));
 	}
 	
-	public function SyncCategories($categories){
-		
-	}
-	
 	public function Respond(){
 		global $myUser;
 		$return = false;
