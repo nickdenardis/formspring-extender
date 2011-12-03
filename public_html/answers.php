@@ -25,6 +25,7 @@
 	$smarty->assign('myObject', $myAnswers);
 	$smarty->assign('display', array('question', 'date_entered'));
 	$smarty->assign('locations', array('question' => '<a href="/answer/view/{$item_id}">{$data}</a>'));
+	$smarty->assign('options', array());
 	
 	// Actions
 	$actions = array();

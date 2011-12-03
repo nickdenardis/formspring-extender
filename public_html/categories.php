@@ -12,6 +12,7 @@
 	$smarty->assign('myObject', $myCategory);
 	$smarty->assign('display', array('category', 'status', 'date_entered'));
 	$smarty->assign('locations', array('category' => '<a href="/category/edit/{$item_id}">{$data}</a>'));
+	$smarty->assign('options', array());
 	
 	// Actions
 	$actions = array();
