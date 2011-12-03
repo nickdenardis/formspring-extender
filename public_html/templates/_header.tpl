@@ -20,7 +20,7 @@
 	              <li class="answers"><a href="/answers">Answers</a></li>
 	              <li class="categories"><a href="/categories">Categories</a></li>
 	              <li class="accounts"><a href="/accounts">Accounts</a></li>
-	              <li class="signin"><a href="/logout">Logout</a></li>
+	              <li class="logout"><a href="/logout">Logout</a></li>
               {else}
 	              <li class="signin"><a href="/redirect">Signin</a></li>
               {/if}
