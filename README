@@ -2,5 +2,18 @@
 
 Extends Formspring to allow for multiple accounts, assignment of questions and categorization of answers
 
-= Documentation
+= Installation
 
+1. Download the source and point your webserver to the public_html folder
+2. Download PHPSimpl http://code.google.com/p/phpsimpl/
+3. Download Smarty http://smarty.net/
+4. chmod 777 /cache templates_c/
+5. Edit the application_top.php with your database information
+  // Database
+  SetDefine('DB_USER', '');
+  SetDefine('DB_HOST', '');
+  SetDefine('DB_PASS', '');
+  SetDefine('DB_DEFAULT', '');
+6. Sign up for a Formspring API key at: http://dev.formspring.me/. Add them to the application_top.php
+  SetDefine('CONSUMER_KEY', '');
+  SetDefine('CONSUMER_SECRET', '');

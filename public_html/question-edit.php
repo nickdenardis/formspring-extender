@@ -6,7 +6,7 @@
 	
 	try {
 		// If they are saving the Information
-		if ($_POST['submit'] == 'Save'){
+		if (isset($_POST['submit']) && $_POST['submit'] == 'Save'){
 			// Get all the Form Data
 			$myAnswer->SetValues($_POST);
 			$myAnswer->SetValue('user_id', $myUser->GetPrimary());
@@ -21,7 +21,7 @@
 		}
 	
 		// If Deleting 
-		if ($_POST['submit'] == 'Delete'){
+		if (isset($_POST['submit']) && $_POST['submit'] == 'Delete'){
 			$myAnswer->SetValues($_POST);
 			$name = stripslashes($myAnswer->GetValue('question'));
 			
@@ -37,7 +37,7 @@
 		}
 	
 		// Set the requested primary key and get its info
-		if ($_GET['id'] != '' && $myAnswer->GetPrimary() == ''){
+		if (isset($_GET['id']) && $_GET['id'] != '' && $myAnswer->GetPrimary() == ''){
 			$myAnswer->SetPrimary((int)$_GET['id']);
 			
 			// Try to get the info

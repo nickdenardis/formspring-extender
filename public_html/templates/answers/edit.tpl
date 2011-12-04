@@ -1,4 +1,4 @@
-{config_load file='main.conf' section='edit'}
+{config_load file='main.conf'}
 {include file="_header.tpl"}
 
 <form action="{$smarty.server.REQUEST_URI}" method="post" name="edit" enctype="multipart/form-data">

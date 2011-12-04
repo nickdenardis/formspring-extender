@@ -58,7 +58,6 @@
 	SetDefine('IS_SECURE', ($_SERVER['SERVER_PORT'] == '443'));
 	SetDefine('ADDRESS', 'http' . (IS_SECURE?'s':'') . '://' . $_SERVER['HTTP_HOST'] . PATH);
 	SetDefine('TITLE', 'Formspring Extender');
-	SetDefine('EMAIL', 'nick.denardis@gmail.com');
 	SetDefine('LOGGING', true);
 	SetDefine('API_VERSION', '1.0');
 	
@@ -87,9 +86,9 @@
 	// Assign the mode to the templates
 	$smarty->assign('mode', $mode);
 		
-	SetDefine('CONSUMER_KEY', '923d7f9ed7b5b1974b85fc48a6ebd53604d0eb445');
-	SetDefine('CONSUMER_SECRET', 'db1ed9c781cc5d14486b75fa9c2076fc04d0eb445');
-	SetDefine('OAUTH_CALLBACK', 'http://formspring:8888/callback');
+	SetDefine('CONSUMER_KEY', '');
+	SetDefine('CONSUMER_SECRET', '');
+	SetDefine('OAUTH_CALLBACK', ADDRESS . 'callback');
 	
 	$myUser = new User;
 	$myAccountInfo = new AccountInfo;
